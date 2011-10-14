@@ -64,7 +64,6 @@ load_template: function()
 		var sub_divs;
 
 		alert( 'Loaded ' + html);
-		sub_div.innerHTML = $( 'body')[ 0 ].innerHTML;
 
 		// now that template is loaded, insert data into it
 		sub_divs = $( 'div.content');
