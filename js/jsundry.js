@@ -1,14 +1,17 @@
 // library to merge sundry files into completed page
 jsundry =
 {
+
 // (semi) private functions
 privs:
 {
+
 // generic ajax error handler
-error: function( x, status, err)
+ajax_error: function( x, status, err)
 	{
 	alert( 'Oops: (' + link + ') ' + status + '/' + err);
 	},
+
 // load indicated content (data)
 load_content: function()
 	{
@@ -26,21 +29,26 @@ load_content: function()
 		}
 
 	link = a_href[ 0 ].getAttribute( 'href');
-	// alert( 'Found link \"' + link + '\"');
+	alert( 'Found data/JSON link \"' + link + '\"');
+
+	// complete the work of the outer function once read completes --
+	//  merge the JSON data into the corresponding elements in the template
 	continuation = function( json)
 		{
-		alert( 'Loaded ' + json);
+		alert( 'Loaded JSON: ' + json);
 		// TODO:  scan for replacements in template
 		};
+
 	ajax_args =
 		{
 		url: link,
 		content: 'json/text',
 		success: continuation,
-		error: jsundry.privs.error
+		error: jsundry.privs.ajax_error
 		};
 	$.ajax( ajax_args);
 	},
+
 // load indicated template
 load_template: function()
 	{
@@ -59,23 +67,28 @@ load_template: function()
 
 	link = a_href[ 0 ].getAttribute( 'href');
 	// alert( 'Found link \"' + link + '\"');
+
+	// complete the work of the outer function once read completes --
+	//  insert the template into page stub,
+	//  and go get dynamic content
 	continuation = function( html)
 		{
 		var sub_divs;
 
-		alert( 'Loaded ' + html);
+		alert( 'Loaded temlate: ' + html);
 
 		// now that template is loaded, insert data into it
 		sub_divs = $( 'div.content');
 		// TODO:  enforce only 1
 		sub_divs.each( jsundry.privs.load_content);
 		};
+
 	ajax_args =
 		{
 		url: link,
 		content: 'html',
 		success: continuation,
-		error: jsundry.privs.error
+		error: jsundry.privs.ajax_error
 		};
 	$.ajax( ajax_args);
 	}
@@ -90,6 +103,7 @@ merge: function()
 	// TODO:  enforce only 1
 	sub_divs.each( jsundry.privs.load_template);
 	}
+
 }
 // vi: ts=4 sw=4
 // *** EOF ***
