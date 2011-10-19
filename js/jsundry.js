@@ -15,14 +15,14 @@ ajax_error: function( x, status, err)
 // load indicated content (data)
 load_content: function()
 	{
-	var data_id_div;
+	var data_div_id;
 	var a_href;
 	var link;
 	var ajax_args;
 	var continuation;
 
-	data_id_div = this;
-	a_href = $( 'a', data_id_div);
+	data_div_id = this;
+	a_href = $( 'a.content', data_div_id);
 	if ( a_href.length == 0)
 		{
 		return;
