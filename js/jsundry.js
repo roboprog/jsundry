@@ -73,9 +73,10 @@ load_template: function()
 	//  and go get dynamic content
 	continuation = function( html)
 		{
-		var template, sub_divs;
+		// var template;
+		var sub_divs;
 
-		alert( 'Loaded temlate: ' + html);
+		// alert( 'Loaded temlate: ' + html);
 		// template = $( 'body', html)[ 0 ].innerHTML;  // TODO: convert to DOM
 		// alert( 'Extracted content: ' + template);
 		sub_div.innerHTML = html;
