@@ -73,9 +73,12 @@ load_template: function()
 	//  and go get dynamic content
 	continuation = function( html)
 		{
-		var sub_divs;
+		var template, sub_divs;
 
 		alert( 'Loaded temlate: ' + html);
+		// template = $( 'body', html)[ 0 ].innerHTML;  // TODO: convert to DOM
+		// alert( 'Extracted content: ' + template);
+		sub_div.innerHTML = html;
 
 		// now that template is loaded, insert data into it
 		sub_divs = $( 'div.content');
