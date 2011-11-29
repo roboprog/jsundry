@@ -74,12 +74,16 @@ load_template: function()
 	continuation = function( html)
 		{
 		// var template;
-		var sub_divs;
+		var sub_divs, contingents;
 
 		// alert( 'Loaded temlate: ' + html);
 		// template = $( 'body', html)[ 0 ].innerHTML;  // TODO: convert to DOM
 		// alert( 'Extracted content: ' + template);
 		sub_div.innerHTML = html;
+
+		// suppress display of any contingent data areas:
+		contingents = $( 'div.contingent');
+		contingents.hide();
 
 		// now that template is loaded, insert data into it
 		sub_divs = $( 'div.content');
