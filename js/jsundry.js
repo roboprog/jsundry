@@ -37,6 +37,8 @@ load_content: function()
 		{
 		alert( 'Loaded JSON: ' + json);
 		// TODO:  scan for replacements in template
+		// TODO:  get data_class field, find element with matching id attr
+		// TODO:  replace element text or (input) value attrs, as appropriate
 		};
 
 	ajax_args =
